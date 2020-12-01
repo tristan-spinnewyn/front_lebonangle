@@ -1,15 +1,15 @@
-class CategoryModel{
+class AdvertModel{
     constructor() {
-        this.categoryApi = new CategoryApi()
+        this.advertApi = new AdvertApi()
     }
 
     getAll(handler){
-        this.categoryApi.getAll(handler)
+        this.advertApi.getAll(handler)
     }
 
     async getById(id) {
         try {
-            return Object.assign(new Category(), await this.categoryApi.getById(id))
+            return Object.assign(new Advert(), await this.advertApi.getById(id))
         } catch (e) {
             if (e === 404) return null
             return undefined

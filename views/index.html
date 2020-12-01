@@ -1,4 +1,39 @@
 <div class="container">
-    <h3>Vue "Index"</h3>
+    <div class="row">
+        <div class="input-field col s12 m6 l4 ">
+            <select multiple id="selectCategory">
+            </select>
+            <label>Catégorie: </label>
+        </div>
+        <div class="input-field col s4 m6 l2">
+            <input id="priceMin" type="number">
+            <label for="priceMin">Prix minimum: </label>
+        </div>
+        <div class="input-field col s4 m6 l2">
+            <input id="priceMax" type="number">
+            <label for="priceMax">Prix Maximum: </label>
+        </div>
+        <div class="input-field col s4 m6 l2">
+            <select id="selectTriDate">
+                <option>-------------</option>
+                <option>Croissant</option>
+                <option>Décroissant</option>
+            </select>
+            <label>Trier par date: </label>
+        </div>
+        <div class="input-field col s4 m6 l2">
+            <select id="selectTriPrice">
+                <option>-------------</option>
+                <option>Croissant</option>
+                <option>Décroissant</option>
+            </select>
+            <label>Trier par prix: </label>
+        </div>
+    </div>
+    <div id="mainAdvertsList">
+        <div class="row" id="advertsList">
+        </div>
+
+    </div>
 </div>
 

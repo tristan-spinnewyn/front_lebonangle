@@ -1,5 +1,6 @@
 class CategoryApi{
     url = "http://localhost:8000/api/categories"
+    simpleUrl = "http://localhost:8000"
 
     getAll(handler){
         fetch(this.url)
@@ -7,8 +8,9 @@ class CategoryApi{
             .then(json => handler(json))
     }
 
-    getCategoryById(id)
+    getById(idApi)
     {
-        return fetchJSON(`${this.url}/${id}`)
+        return fetchJSON(`${this.simpleUrl}${idApi}`)
     }
+
 }

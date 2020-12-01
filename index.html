@@ -10,12 +10,33 @@
     <link rel="stylesheet" type="text/css" href="res/css/index.css"/>
 </head>
 <body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="javascript:void(0);" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a onclick="navigate('index')">Annonce</a></li>
+            <li><a>Ajouter une annonce</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+    <li><a onclick="navigate('index')">Annonce</a></li>
+    <li><a>Ajouter une annonce</a></li>
+</ul>
     <div id="content"></div>
 
     <script type="application/ecmascript" src="app/tools.js"></script>
     <script type="application/ecmascript" src="app/model/classes.js"></script>
     <script type="application/ecmascript" src="app/model/model.js"></script>
+    <script type="application/ecmascript" src="app/services/categoryapi.js"></script>
+    <script type="application/ecmascript" src="app/services/advertapi.js"></script>
+    <script type="application/ecmascript" src="app/services/pictureapi.js"></script>
+    <script type="application/ecmascript" src="app/model/categorymodel.js"></script>
+    <script type="application/ecmascript" src="app/model/advertmodel.js"></script>
+
+
     <script type="application/ecmascript" src="app/controllers/basecontroller.js"></script>
+
     <script>navigate("index")</script>
 </body>
 </html>
