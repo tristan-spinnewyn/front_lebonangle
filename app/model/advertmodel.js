@@ -3,8 +3,18 @@ class AdvertModel{
         this.advertApi = new AdvertApi()
     }
 
-    getAll(handler){
-        this.advertApi.getAll(handler)
+    async getAll(query,getNbAdvert = false){
+        let json = await this.advertApi.getAll(query)
+        if(!getNbAdvert) {
+            let adverts = []
+            for (let advert of json['hydra:member']) {
+                adverts.push(Object.assign(new Advert(), advert))
+            }
+
+            return adverts
+        }else{
+            return json['hydra:totalItems']
+        }
     }
 
     async getById(id) {

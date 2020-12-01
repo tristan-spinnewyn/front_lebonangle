@@ -1,15 +1,22 @@
-class AdvertApi{
+class AdvertApi {
     url = "http://localhost:8000/api/adverts"
     simpleUrl = "http://localhost:8000"
-
-    getAll(handler){
-        fetch(this.url)
-            .then(response => response.json())
-            .then(json => handler(json))
+    headers = new Headers()
+    getAll(query) {
+        this.headers.set('Content-Type','Application/json')
+        return new Promise((resolve, reject) => fetch(this.url + query, {
+            method: 'GET',
+            headers: this.headers
+        }).then(res => {
+            if (res.status === 200) {
+                resolve(res.json())
+            } else {
+                reject(res.status)
+            }
+        }).catch(err => reject(err)))
     }
 
-    getById(idApi)
-    {
+    getById(idApi) {
         return fetchJSON(`${this.simpleUrl}${idApi}`)
     }
 

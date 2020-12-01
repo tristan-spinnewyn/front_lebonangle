@@ -3,8 +3,14 @@ class CategoryModel{
         this.categoryApi = new CategoryApi()
     }
 
-    getAll(handler){
-        this.categoryApi.getAll(handler)
+    async getAll(){
+        let categories = []
+        let json = await this.categoryApi.getAll()
+        for(let category of json['hydra:member']){
+            categories.push(Object.assign(new Category(),category))
+        }
+
+        return categories
     }
 
     async getById(id) {
