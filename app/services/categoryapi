@@ -1,0 +1,14 @@
+class CategoryApi{
+    url = "http://localhost:8000/api/categories"
+
+    getAll(handler){
+        fetch(this.url)
+            .then(response => response.json())
+            .then(json => handler(json))
+    }
+
+    getCategoryById(id)
+    {
+        return fetchJSON(`${this.url}/${id}`)
+    }
+}
