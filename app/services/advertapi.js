@@ -20,4 +20,13 @@ class AdvertApi {
         return fetchJSON(`${this.simpleUrl}${idApi}`)
     }
 
+    post(advert){
+        this.headers.set('Content-Type','application/json')
+        return fetch(this.url,{
+            method:'POST',
+            headers:this.headers,
+            body:JSON.stringify(advert)
+        })
+    }
+
 }

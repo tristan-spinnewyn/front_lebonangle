@@ -25,4 +25,8 @@ class AdvertModel{
             return undefined
         }
     }
+    insert(advert){
+        return this.advertApi.post(advert).then(res=> res.status)
+    }
+
 }

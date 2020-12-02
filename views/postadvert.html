@@ -1,0 +1,51 @@
+<div class="container">
+    <form class="col s12" enctype="multipart/form-data">
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="title" type="text" class="validate">
+                <label for="title">Titre de l'annonce</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="author" type="text" class="validate">
+                <label for="author">Votre nom</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="email" type="email" class="validate">
+                <label for="email">Votre email</label>
+            </div>
+            <div class="input-field col s12 m2">
+                <input id="price" type="number" step="any" class="validate">
+                <label for="author">le prix</label>
+            </div>
+            <div class="input-field col s12 m4">
+                <select id="selectCategory">
+                </select>
+                <label>Catégorie: </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea class="materialize-textarea" id="contentAdvert"></textarea>
+                <label for="contentAdvert">Descrition de l'annonce (maximum 1200 caractères):</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label>Vos image</label>
+                <div class = "file-field input-field">
+                    <div class = "btn">
+                        <span>Parcourir</span>
+                        <input id="pictures" type="file" multiple />
+                    </div>
+                    <div class = "file-path-wrapper">
+                        <input class = "file-path validate" type = "text"
+                               placeholder = "Vos fichiers" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="waves-effect waves-light btn" onclick="postAdvertController.postAdvert()">Soumettre votre annonce</a>
+    </form>
+</div>

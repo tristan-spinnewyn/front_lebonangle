@@ -11,4 +11,8 @@ class PictureModel{
             return undefined
         }
     }
+
+    async post(formData){
+        return Object.assign(new Picture(), await this.pictureApi.post(formData))
+    }
 }
