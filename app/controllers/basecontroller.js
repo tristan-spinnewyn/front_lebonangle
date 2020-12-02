@@ -10,6 +10,9 @@ class BaseController {
     displayServiceError() {
         this.toast('Service injoignable ou problème réseau')
     }
+    displayNotFoundError() {
+        this.toast('Entité inexistante')
+    }
     getModal(selector) {
         return M.Modal.getInstance($(selector))
     }

@@ -39,16 +39,17 @@ class IndexController extends BaseController {
             }
             for (const advert of await this.advertModel.getAll(query)) {
                 let category = await this.model.getById(advert.category)
+                let d = new Date(advert.publishedAt)
                 content += `<div class="col s12 m6">
                                   <div class="card blue-grey darken-1">
                                     <div class="card-content white-text">
                                       <span class="card-title">${advert.title}</span>
                                       <p>${advert.content}</p>
                                       <p>Vendu à ${advert.price}€</p>
-                                      <p>Publié par ${advert.author} à ${advert.publishedAt} dans la catégorie ${category.name}</p>
+                                      <p>Publié par ${advert.author} à ${this.formatDate(d)} dans la catégorie ${category.name}</p>
                                     </div>
                                     <div class="card-action">
-                                      <a href="#">Plus d'info</a>
+                                      <a onclick="indexController.seeAdvert('${advert['@id']}')">Plus d'info</a>
                                     </div>
                                   </div>
                                 </div>`
@@ -110,6 +111,35 @@ class IndexController extends BaseController {
             this.currentPage -= 1
 
         this.setQuery(true)
+    }
+
+    async seeAdvert(id){
+        try {
+            const object = await this.advertModel.getById(id)
+            if (object === undefined) {
+                this.displayServiceError()
+                return
+            }
+            if (object === null) {
+                this.displayNotFoundError()
+                return
+            }
+            this.selectedAdvert = object
+            navigate("advertindex")
+        } catch (err) {
+            console.log(err)
+            this.displayServiceError()
+        }
+    }
+
+    formatDate(dt){
+        return `${
+            (dt.getMonth()+1).toString().padStart(2, '0')}/${
+            dt.getDate().toString().padStart(2, '0')}/${
+            dt.getFullYear().toString().padStart(4, '0')} ${
+            dt.getHours().toString().padStart(2, '0')}:${
+            dt.getMinutes().toString().padStart(2, '0')}:${
+            dt.getSeconds().toString().padStart(2, '0')}`
     }
 }
 
